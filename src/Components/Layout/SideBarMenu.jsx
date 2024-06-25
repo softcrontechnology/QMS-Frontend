@@ -87,17 +87,17 @@ const SideBarMenu = () => {
               </a>
               <ul className="menu-sub">
                 <li className="menu-item">
-                  <Link to="/products-list" className="menu-link">
+                  <Link to="/generate-token" className="menu-link">
                     <div data-i18n="Product List">Generate Token</div>
                   </Link>
                 </li>
                 <li className="menu-item">
-                  <Link to="/add-product" className="menu-link">
+                  <Link to="/today-token" className="menu-link">
                     <div data-i18n="Add Product"> Today Token List</div>
                   </Link>
                 </li>
                 <li className="menu-item">
-                  <Link to="/category" className="menu-link">
+                  <Link to="/display-queue" className="menu-link">
                     <div data-i18n="Category List">Display Queue</div>
                   </Link>
                 </li>
@@ -106,7 +106,7 @@ const SideBarMenu = () => {
             {/* Product menu end */}
 
             <li className="menu-item">
-              <Link to="/order-list" className="menu-link">
+              <Link to="/" className="menu-link">
                 {/* <i className="menu-icon tf-icons ti ti-shopping-cart" /> */}
                 <div data-i18n="Order">Logout</div>
               </Link>
