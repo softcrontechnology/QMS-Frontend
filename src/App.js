@@ -12,14 +12,13 @@ import TodayToken from "./Components/Pages/TodayToken";
 import DisplayQueue from "./Components/Pages/DisplayQueue";
 import AdminLoginPage from "./AdminPages/AdminloginPage";
 
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<AdminLoginPage />} />
-        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/*" element={<ProtectedRoutes />} />
       </Routes>
     </BrowserRouter>
@@ -27,8 +26,6 @@ function App() {
 }
 
 function ProtectedRoutes() {
-
-
   // const isAuthenticated = Cookies.get("token") == null;
 
   // console.log(isAuthenticated);
