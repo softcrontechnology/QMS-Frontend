@@ -1,7 +1,9 @@
 import React from "react";
 
 const GenerateToken = () => {
-  return <div></div>;
+  return <div>
+    Token najsdsbfjkssjesgorfj
+  </div>;
 };
 
 export default GenerateToken;
