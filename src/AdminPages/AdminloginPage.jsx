@@ -32,6 +32,8 @@ const AdminLoginPage = () => {
 
       const result = await response.json();
 
+      console.log(result);
+
       if (result.message === "Invalid username") {
         alert("Check your username");
         return;

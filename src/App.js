@@ -17,6 +17,8 @@ function ProtectedRoutes() {
 
   const isAuthenticated = Cookies.get("token") !== undefined;
 
+  console.log(isAuthenticated);
+
   if (!isAuthenticated) {
     return <Navigate to="/" replace />;
   }
