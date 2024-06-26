@@ -1,37 +1,26 @@
-import "./App.css";
+import { Navigate, useNavigate, Outlet, Route, Routes, BrowserRouter } from "react-router-dom";
+import Cookies from "js-cookie";
 import SideBarMenu from "./Components/Layout/SideBarMenu";
 import HeaderNav from "./Components/Layout/Header/HeaderNav";
 import Footer from "./Components/Layout/Footer";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import Dashboard from "./Components/Dashboard/Dashboard";
 import { ToastContainer, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Dashboard from "./Components/Dashboard/Dashboard";
 import GenerateToken from "./Components/Pages/GenerateToken";
 import Scanner from "./Components/Pages/Scanner";
 import TodayToken from "./Components/Pages/TodayToken";
 import DisplayQueue from "./Components/Pages/DisplayQueue";
-import AdminLoginPage from "./AdminPages/AdminloginPage";
-
-import Cookies from "js-cookie";
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<AdminLoginPage />} />
-        <Route path="/*" element={<ProtectedRoutes />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
+import AdminLoginPage from "./AdminPages/AdminloginPage"
 
 function ProtectedRoutes() {
-  // const isAuthenticated = Cookies.get("token") == null;
+  const navigate = useNavigate();
 
-  // console.log(isAuthenticated);
-  // if (!isAuthenticated) {
-  //   return <Navigate to="/login" replace />;
-  // }
+  const isAuthenticated = Cookies.get("token") !== undefined;
+
+  if (!isAuthenticated) {
+    return <Navigate to="/" replace />;
+  }
+
   return (
     <>
       <ToastContainer
@@ -71,6 +60,17 @@ function ProtectedRoutes() {
         </div>
       </div>
     </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AdminLoginPage />} />
+        <Route path="/*" element={<ProtectedRoutes />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -70,7 +70,7 @@ const SideBarMenu = () => {
           <ul className="menu-inner py-1">
             {/* Dashboards */}
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/dashboard" className="menu-link">
                 <i className="menu-icon tf-icons ti ti-smart-home" />
                 <div data-i18n="Dashboards">Dashboard</div>
               </Link>
@@ -83,22 +83,22 @@ const SideBarMenu = () => {
             >
               <a href="javascript:void(0)" className="menu-link menu-toggle">
                 {/* <i className="menu-icon tf-icons ti ti-shopping-cart" /> */}
-                <div data-i18n="eCommerce">Token management</div>
+                <div data-i18n="Token management">Token management</div>
               </a>
               <ul className="menu-sub">
                 <li className="menu-item">
                   <Link to="/generate-token" className="menu-link">
-                    <div data-i18n="Product List">Generate Token</div>
+                    <div data-i18n="Generate Token">Generate Token</div>
                   </Link>
                 </li>
                 <li className="menu-item">
                   <Link to="/today-token" className="menu-link">
-                    <div data-i18n="Add Product"> Today Token List</div>
+                    <div data-i18n="Today Token List"> Today Token List</div>
                   </Link>
                 </li>
                 <li className="menu-item">
                   <Link to="/display-queue" className="menu-link">
-                    <div data-i18n="Category List">Display Queue</div>
+                    <div data-i18n="Display Queue">Display Queue</div>
                   </Link>
                 </li>
               </ul>
