@@ -88,29 +88,17 @@ const SideBarMenu = () => {
               <ul className="menu-sub">
                 <li className="menu-item">
                   <Link to="/generate-token" className="menu-link">
-<<<<<<< HEAD
                     <div data-i18n="Generate Token">Generate Token</div>
-=======
-                    <div data-i18n="Product List">Generate Token</div>
->>>>>>> 5da49b211ffaaf41c9def48fa0e6cff9621f2886
                   </Link>
                 </li>
                 <li className="menu-item">
                   <Link to="/today-token" className="menu-link">
-<<<<<<< HEAD
                     <div data-i18n="Today Token List"> Today Token List</div>
-=======
-                    <div data-i18n="Add Product"> Today Token List</div>
->>>>>>> 5da49b211ffaaf41c9def48fa0e6cff9621f2886
                   </Link>
                 </li>
                 <li className="menu-item">
                   <Link to="/display-queue" className="menu-link">
-<<<<<<< HEAD
                     <div data-i18n="Display Queue">Display Queue</div>
-=======
-                    <div data-i18n="Category List">Display Queue</div>
->>>>>>> 5da49b211ffaaf41c9def48fa0e6cff9621f2886
                   </Link>
                 </li>
               </ul>
