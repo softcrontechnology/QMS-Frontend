@@ -21,7 +21,11 @@
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.51.1",
+<<<<<<< HEAD
     "react-icons": "^5.2.1",
+=======
+    "react-modal": "^3.16.1",
+>>>>>>> 5da49b211ffaaf41c9def48fa0e6cff9621f2886
     "react-perfect-scrollbar": "^1.5.8",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.22.3",
