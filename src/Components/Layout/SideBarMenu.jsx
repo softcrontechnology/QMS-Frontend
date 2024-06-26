@@ -1,18 +1,27 @@
 import React, { useState } from "react";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import Cookies from "js-cookie";
 
 const SideBarMenu = () => {
   const [activeIndexMainMenu, setActiveMainMenu] = useState(null);
+
+  const navigate = useNavigate()
 
   const toggleMainMenu = (index) => {
     setActiveMainMenu((prevIndex) => (prevIndex === index ? null : index));
   };
 
+  const removeCookies = () => {
+    Cookies.remove("token", { path: "/", domain: "localhost" });
+    window.location.reload();
+    navigate("/")
+  }
+
   return (
     <>
-      {/* Menu */}
       <aside
         id="layout-menu"
         className="layout-menu menu-vertical menu bg-menu-theme"
@@ -106,15 +115,11 @@ const SideBarMenu = () => {
             {/* Product menu end */}
 
             <li className="menu-item">
-              <Link to="/" className="menu-link">
-                {/* <i className="menu-icon tf-icons ti ti-shopping-cart" /> */}
-                <div data-i18n="Order">Logout</div>
-              </Link>
+                <div onClick={removeCookies} style={{cursor:"pointer"}} className="menu-link" data-i18n="Order">Logout</ div>
             </li>
           </ul>
         </PerfectScrollbar>
       </aside>
-      {/* / Menu */}
     </>
   );
 };

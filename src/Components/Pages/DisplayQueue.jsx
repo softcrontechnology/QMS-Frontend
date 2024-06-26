@@ -3,6 +3,8 @@ import MUIDataTable from 'mui-datatables';
 import { Link } from 'react-router-dom';
 import { VscScreenFull } from 'react-icons/vsc';
 
+import { Typography } from "@mui/material";
+
 const ProductList = () => {
     const [tableData, setTableData] = useState([]);
     const [isFullScreen, setIsFullScreen] = useState(false);
@@ -59,7 +61,7 @@ const ProductList = () => {
             document.removeEventListener("msfullscreenchange", handleFullScreenChange);
         };
     }, []);
-    
+
     const toggleFullScreen = () => {
         if (!isFullScreen) {
             if (tableRef.current.requestFullscreen) {
@@ -93,7 +95,7 @@ const ProductList = () => {
                 sort: true,
                 filter: true,
                 customHeadRender: ({ label }) => (
-                    <th style={{ textAlign: 'left',paddingLeft:"15px" }}>
+                    <th style={{ textAlign: 'left', paddingLeft: "15px" }}>
                         <strong>{label}</strong>
                     </th>
                 ),
@@ -158,7 +160,7 @@ const ProductList = () => {
                 sort: false,
                 filter: false,
                 customHeadRender: ({ label }) => (
-                    <th style={{ fontWeight: 'bold', textAlign:"center" }}>
+                    <th style={{ fontWeight: 'bold', textAlign: "center" }}>
                         {label}
                     </th>
                 ),
@@ -174,7 +176,6 @@ const ProductList = () => {
             }
         }
     ];
-    
 
     const options = {
         selectableRows: 'none',
@@ -200,7 +201,11 @@ const ProductList = () => {
             </div>
             <div ref={tableRef} className={`mui-datatables ${isFullScreen ? 'fullscreen' : ''}`}>
                 <MUIDataTable
-                    title={"Live Queue"}
+                    title={
+                        <Typography variant="h5" style={{ fontWeight: 'bold', color: "#2a2a2a", textAlign: "left" }}>
+                            Live Queue
+                        </Typography>
+                    }
                     data={tableData}
                     columns={columns}
                     options={options}

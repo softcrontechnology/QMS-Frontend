@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import MUIDataTable from 'mui-datatables';
 import { Link } from 'react-router-dom';
 import { VscScreenFull } from 'react-icons/vsc';
+import { Typography } from '@mui/material';
 
 const ProductList = () => {
     const [tableData, setTableData] = useState([]);
@@ -200,7 +201,11 @@ const ProductList = () => {
             </div>
             <div ref={tableRef} className={`mui-datatables ${isFullScreen ? 'fullscreen' : ''}`}>
                 <MUIDataTable
-                    title={"Today's All Tokens"}
+                    title={
+                        <Typography variant="h5" style={{ fontWeight: 'bold', color: "#2a2a2a", textAlign: "left" }}>
+                            Today's All Tokens
+                        </Typography>
+                    }
                     data={tableData}
                     columns={columns}
                     options={options}
