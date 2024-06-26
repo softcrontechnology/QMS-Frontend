@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState , useRef} from "react";
 import '../../assets/css/GeneratToken.css'
 import { Link, useNavigate } from "react-router-dom";
 import Modal from 'react-modal';
+import { useReactToPrint } from "react-to-print";
 
 const GenerateToken = () => {
   const [Token, setToken] = useState({
@@ -12,11 +13,23 @@ const GenerateToken = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [receiptData, setReceiptData] = useState(null);
 
+  // const baseImage64 = receiptData.qr_b64;
   const Navigate = useNavigate()
+  const pritRef = useRef();
+  const handle_Print = useReactToPrint({
+    content:()=> pritRef.current,
+  })
 
   const handle_token = (e) => {
     setToken({ ...Token, [e.target.name]: e.target.value });
   };
+
+  //#region Function to format data
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-US', options);
+  };
+  //#endregion
 
   //#region Generate Token 
   const handle_CreateToken = async (e) => {
@@ -33,6 +46,7 @@ const GenerateToken = () => {
       });
       const result = await response.json();
 
+      setReceiptData(result)
       console.log(result);
 
       if (result.message === "Mobile is required") {
@@ -73,9 +87,7 @@ const GenerateToken = () => {
   };
   //#endregion
 
-
-
-
+ //#region Html for create_token
   return <div>
     <div className="container">
       <div className="button-container">
@@ -117,27 +129,49 @@ const GenerateToken = () => {
     {/* <div className="image-container">
     <p>Images Of Companies</p>
   </div> */}
-  //#region Modal for Receipt
-   <Modal isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Receipt">
+    <div className="modal">
+      <Modal ref={pritRef} isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Receipt">
+        <button onClick={closeModal}>Close</button>
+         <div className="Print_button_receipt">
+          <button  className="btn_print" onClick={handle_Print} >Print</button>
+        </div>
+        <div className="pop_up" ref={pritRef}>
+        <div> 
         <h2>Softcron tecnology</h2>
+        </div>
         {receiptData && (
           <div>
-            <p>Name: {receiptData.name}</p>
-            <p>Mobile: {receiptData.mobile}</p>
-            <p>No. of Person: {receiptData.no_of_person}</p>
-            <p>Token ID: {receiptData.token_id}</p>
+          <div  className="detail_Token_receipt">
+            <div className="head_date_token">
+              <p>Token_No: {receiptData.token_no}</p>
+              <p>Date: {formatDate(receiptData.created_datetime)}</p>
+            </div>
+            <div className="detail_of_users">
+              <p>Name:           {receiptData.name}</p>
+              <p>Mobile:         {receiptData.mobile}</p>
+              <p>No. of Person:  {receiptData.no_of_person}</p>
+              <p>Token ID:       {receiptData.token_id}</p>
+            </div>
             {/* Display other receipt details here */}
-            <div className="QR_Code">
-
+            <div  className="QR_Code">
+              <img  src={receiptData && receiptData.qr_b64} alt="QRCode" />
             </div>
           </div>
+        </div>
+       
         )}
-        <button onClick={closeModal}>Close</button>
+         </div>
       </Modal>
-      //#endregion
+    </div>
+
 
 
   </div>
+  //#endregion
+
+
 };
+
+
 
 export default GenerateToken;

@@ -1,94 +1,95 @@
+/* General container styles */
 .container {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-    margin-left: 10%;
-    background-color: #f5f5f5;
-  }
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  background-color: #f5f5f5;
+}
 
-  .mobile_req{
-    margin-top: -15px;
-    color: red;
-    font-size: 18px;
-  }
-  
-  .input-container {
-    display: flex;
-    margin-bottom: 10px;
-  }
-  
-  .input-container input {
-    padding: 8px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    flex: 1;
-    outline: none;
-  }
-  
-  .button {
-    padding: 8px 16px;
-    margin-left: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+/* Mobile requirement styles */
+.mobile_req {
+  margin-top: -15px;
+  color: red;
+  font-size: 18px;
+}
 
-  .button .link{
-    text-decoration: none;
-    color: whitesmoke;
-  }
-  
-  .button:hover {
-    background-color: #45a049;
-  }
+/* Input container styles */
+.input-container {
+  display: flex;
+  margin-bottom: 10px;
+}
 
-  .button:nth-child(1){
-    background: black;
-  }
+.input-container input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+  outline: none;
+}
 
-  .button:nth-child(2){
-    background: orangered;
-  }
+/* Button styles */
+.button {
+  padding: 8px 16px;
+  margin-left: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  .button:nth-child(3){
-    background:lightsteelblue;
-  }
+.button .link {
+  text-decoration: none;
+  color: whitesmoke;
+}
 
-  .button1 {
-    width: 70%;
-    margin-left:10%;
-    padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .button1:hover {
-    background-color: #45a049;
-  }
-  
-  .image-container {
-    width: 200px;
-    height: 200px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f5f5f5;
-    margin-left: 10px;
-  }
-  
-  .image-container p {
-    text-align: center;
-    margin: 50px 0;
-  }
-  
+.button:hover {
+  background-color: #45a049;
+}
 
-  /* Css For Pop-up */
-  /* GenerateToken.css */
+.button:nth-child(1) {
+  background: black;
+}
+
+.button:nth-child(2) {
+  background: orangered;
+}
+
+.button:nth-child(3) {
+  background: lightsteelblue;
+}
+
+/* Button1 styles */
+.button1 {
+  width: 70%;
+  margin-left: 10%;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button1:hover {
+  background-color: #45a049;
+}
+
+/* Image container styles */
+.image-container {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  margin-left: 10px;
+}
+
+.image-container p {
+  text-align: center;
+  margin: 50px 0;
+}
 
 /* Modal styles */
 .ReactModal__Overlay {
@@ -99,10 +100,10 @@
 }
 
 .ReactModal__Content {
-  width: 600px;
-  height: 400px;
+  width: 500px;
+  height: 520px;
   margin-left: 30%;
-  margin-top: 5%;
+  margin-top: 4%;
   padding: 20px;
   background: #fff;
   border-radius: 8px;
@@ -112,14 +113,14 @@
 
 .ReactModal__Content h2 {
   margin-top: 0;
+  text-align: center;
 }
 
 .ReactModal__Content button {
-  margin-top: -55px;
+  margin-top: 5px;
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
-  float: right;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -131,4 +132,136 @@
 
 .ReactModal__Content p {
   margin: 10px 0;
+}
+
+/* Token receipt styles */
+.detail_Token_receipt {
+  display: grid;
+  text-align: center;
+}
+
+.head_date_token {
+  display: flex;
+  gap: 170px;
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+}
+
+.detail_of_users p:nth-child(1),
+.detail_of_users p:nth-child(2),
+.detail_of_users p:nth-child(3),
+.detail_of_users p:nth-child(4) {
+  font-weight: bold;
+  color: black;
+}
+
+.QR_Code img {
+  height: 150px;
+  width: 150px;
+}
+
+.Print_button_receipt {
+ float: right;
+}
+
+.Print_button_receipt .btn_print {
+  padding: 11px;
+  width: 100px;
+  background: #739bc1;
+}
+
+.Print_button_receipt .btn_print:hover {
+  background: #9db3c8;
+}
+
+/* Media queries for tablets */
+@media (max-width: 768px) {
+  .container {
+    margin-left: 5%;
+  }
+  
+  .button1 {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .ReactModal__Content {
+    width: 80%;
+    margin-left: 10%;
+  }
+}
+
+/* Media queries for mobile phones */
+@media (max-width: 480px) {
+  .container {
+    margin-left: 2%;
+    padding: 5px;
+  }
+  
+  .mobile_req {
+    font-size: 16px;
+  }
+  
+  .input-container {
+    flex-direction: column;
+  }
+  
+  .input-container input {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .button {
+    /* display: flex; */
+
+    margin-left: 5px;
+    margin-top: 10px;
+    width: 32%;
+    text-align: center;
+    /* gap: 5px; */
+  }
+
+  .button:nth-child(1){
+    width: 25%;
+  }
+
+  .button:nth-child(2){
+    width: 25%;
+  }
+
+  .button:nth-child(3){
+    width:40%;
+  }
+  
+  .button1 {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .image-container {
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+  }
+
+  .ReactModal__Content {
+    width: 80%;
+    height: 60%;
+    margin-left: -1%;
+    margin-top: 30%;
+  }
+  
+  .head_date_token {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .Print_button_receipt{
+    display: flex;
+    margin-left: 60%;
+    margin-top: -943px;
+    width: 100px;
+
+  }
 }
