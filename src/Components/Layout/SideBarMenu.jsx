@@ -1,14 +1,11 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
-import { Link, useNavigate } from "react-router-dom";
-
 import Cookies from "js-cookie";
-
 const SideBarMenu = () => {
   const [activeIndexMainMenu, setActiveMainMenu] = useState(null);
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const toggleMainMenu = (index) => {
     setActiveMainMenu((prevIndex) => (prevIndex === index ? null : index));
@@ -17,8 +14,8 @@ const SideBarMenu = () => {
   const removeCookies = () => {
     Cookies.remove("token", { path: "/", domain: "localhost" });
     window.location.reload();
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   return (
     <>
@@ -91,7 +88,6 @@ const SideBarMenu = () => {
               onClick={() => toggleMainMenu(0)}
             >
               <a href="javascript:void(0)" className="menu-link menu-toggle">
-                {/* <i className="menu-icon tf-icons ti ti-shopping-cart" /> */}
                 <div data-i18n="Token management">Token management</div>
               </a>
               <ul className="menu-sub">
@@ -115,7 +111,13 @@ const SideBarMenu = () => {
             {/* Product menu end */}
 
             <li className="menu-item">
-                <div onClick={removeCookies} style={{cursor:"pointer"}} className="menu-link" data-i18n="Order">Logout</ div>
+              <Link to="/scan-token" className="menu-link">
+                <div data-i18n="Dashboards">QR Scanner</div>
+              </Link>
+            </li>
+
+            <li className="menu-item">
+              <div onClick={removeCookies} style={{ cursor: "pointer" }} className="menu-link" data-i18n="Order">Logout</div>
             </li>
           </ul>
         </PerfectScrollbar>

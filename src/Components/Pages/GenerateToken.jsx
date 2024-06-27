@@ -13,6 +13,7 @@ const GenerateToken = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [receiptData, setReceiptData] = useState(null);
 
+
   // const baseImage64 = receiptData.qr_b64;
   const Navigate = useNavigate()
   const pritRef = useRef();
