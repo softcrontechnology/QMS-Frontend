@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { QrReader } from 'react-qr-reader';
 import './QrScanner.css';
 import { VscScreenFull } from 'react-icons/vsc';
@@ -9,15 +9,51 @@ const Scanner = () => {
 
   const tableRef = useRef(null);
 
-  const handleScan = (result) => {
-    if (result) {
+  const handleScan = useCallback(async (result) => {
+    if (result?.text) {
       setScanResult(result.text);
-    }
-  };
+      try {
+        const token_no = result.text
 
-  const handleError = (err) => {
-    console.error(err);
-  };
+        const response = await fetch("http://localhost:8000/api/v1/scan-token", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token_no }),
+          credentials: "include",
+        });
+        const data = await response.json();
+        console.log(data);
+
+        if (data.message === "Token not found or Expired, Try again!") {
+          setScanResult("")
+          return alert("Token Invalid")
+
+        }
+
+        if (data.message === "Your token is valid") {
+          setScanResult("")
+          return alert("Token Valid")
+          
+        }
+
+        // if (Array.isArray(result)) {
+        //   setTableData(result);
+        // } else {
+        //   console.error("Expected an array but got:", result);
+        //   setTableData([]);
+        // }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setScanResult("")
+      }
+    }
+  }, []);
+
+  // const handleError = useCallback((err) => {
+  //   console.error("QR Scan Error:", err);
+  // }, []);
 
   useEffect(() => {
     const handleFullScreenChange = () => {
@@ -64,10 +100,6 @@ const Scanner = () => {
     setIsFullScreen(!isFullScreen);
   };
 
-  setTimeout(() => {
-    setScanResult("")
-  }, 3000);
-
   return (
     <div>
       <div className="d-flex justify-content-end p-3">
@@ -78,15 +110,12 @@ const Scanner = () => {
         </div>
       </div>
       <div ref={tableRef} className="qr-scanner-container">
-        <h2 style={{color: isFullScreen ? "white" : ""}}>QR Code Scanner</h2>
+        <h2 style={{ color: isFullScreen ? "white" : "" }}>QR Code Scanner</h2>
         <div className="qr-reader" style={{ height: isFullScreen ? "50%" : "100%" }}>
           <QrReader
             onResult={(result, error) => {
-              if (!!result) {
+              if (result) {
                 handleScan(result);
-              }
-              if (!!error) {
-                handleError(error);
               }
             }}
             style={{ width: '100%', }}

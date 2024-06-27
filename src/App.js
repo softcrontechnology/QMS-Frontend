@@ -1,4 +1,4 @@
-import { Navigate, useNavigate, Outlet, Route, Routes, BrowserRouter } from "react-router-dom";
+import { Navigate, Route, Routes, BrowserRouter } from "react-router-dom";
 import Cookies from "js-cookie";
 import SideBarMenu from "./Components/Layout/SideBarMenu";
 import HeaderNav from "./Components/Layout/Header/HeaderNav";
@@ -13,7 +13,6 @@ import DisplayQueue from "./Components/Pages/DisplayQueue";
 import AdminLoginPage from "./AdminPages/AdminloginPage"
 
 function ProtectedRoutes() {
-  const navigate = useNavigate();
 
   const isAuthenticated = Cookies.get("token") !== undefined;
 
