@@ -175,16 +175,20 @@ const Dashboard = () => {
   return (
     <div className="main_dashboard">
       <div className="Token">
-        <div className="dashboard_token_no">
+        <div className="dashboard_token_no total">
           <h4>Total Token</h4>
           <p>20</p>
         </div>
-        <div className="dashboard_token_no">
+        <div className="dashboard_token_no pending">
           <h4>Pending Token</h4>
           <p>15</p>
         </div>
-        <div className="dashboard_token_no">
+        <div className="dashboard_token_no complete">
           <h4>Complete Token</h4>
+          <p>5</p>
+        </div>
+        <div className="dashboard_token_no waiting">
+          <h4>Waiting Token</h4>
           <p>5</p>
         </div>
       </div>
