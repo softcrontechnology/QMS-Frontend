@@ -1,50 +1,59 @@
 .main_chart_one {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f0f0f0;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f0f0f0;
 }
 
 .chart_date {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .chart_Select_day,
 .chart_Select_week,
 .chart_Select_month {
-    background-color: #007bff;
-    color: #fff;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
-    cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 .Chart {
-    padding: 20px;
-    background-color: #fff;
+  padding: 20px;
+  background-color: #fff;
 }
 
 /* Flexbox for button alignment */
 .chart_Select_day {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 /* Hover effect for buttons */
 .chart_Select_day button:hover,
 .chart_Select_week button:hover,
 .chart_Select_month button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
+/* Media query for mobile */
 @media (max-width: 768px) {
-    .main_chart_one {
-        padding: 15px;
-        margin: 15px;
-    }
+  .main_chart_one {
+    width: 100%;
+      margin: 2px;
+      padding: 10px;
+  }
+
+  .chart_Select_day,
+  .chart_Select_week,
+  .chart_Select_month {
+      padding: 6px 12px;
+      margin-right: 5px;
+  }
 }
 
 .chart_conainer{
