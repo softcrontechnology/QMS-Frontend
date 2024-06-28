@@ -1,0 +1,300 @@
+/* Basic CSS */
+.main_chart_one {
+    margin: 20px; /* Adjust margin as needed */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+  }
+  
+  .chart_date {
+    margin-bottom: 15px; /* Adjust spacing */
+  }
+  
+  .chart_Select_day,
+  .chart_Select_week,
+  .chart_Select_month {
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 8px 16px; /* Adjust padding */
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px; /* Adjust spacing between buttons */
+    cursor: pointer;
+  }
+  
+  .Chart {
+    padding: 20px; /* Adjust padding */
+    background-color: #fff; /* Chart container background color */
+  }
+  
+  /* Advanced CSS for Enhancement */
+  
+  /* Flexbox for button alignment */
+  .chart_Select_day {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Hover effect for buttons */
+  .chart_Select_day button:hover,
+  .chart_Select_week button:hover,
+  .chart_Select_month button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  /* Responsive layout example */
+  @media (max-width: 768px) {
+    .main_chart_one {
+      padding: 15px;
+      margin: 15px;
+    }
+  }
+
+  
+  /* Chart_two for Css */
+  /* Existing styles */
+.Chart_main_2 {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 45%;
+    max-width: 600px;
+    height: 490px;
+    margin-top: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    margin-left: 20px; /* Centers the container */
+  }
+  
+  .chart_profit_main {
+    margin-bottom: 20px;
+    margin-left: 10px;
+  }
+  
+  .chart_profit {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+  }
+  
+  .chart_det {
+    display: flex;
+    align-items: center;
+  }
+  
+  .Chart_two_detailed {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  .chart_css {
+    margin-left: 8px;
+    cursor: pointer;
+  }
+  
+  .main_chart {
+    margin-top: 20px;
+  }
+  
+  .Chart_det {
+    appearance: none;
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .Chart_main_2 {
+      width: 100%;
+      max-width: none;
+      margin-left: 0; /* Centering adjustment for mobile */
+      padding: 15px; /* Adjust padding for smaller screens */
+    }
+  
+    .chart_profit_main {
+      margin-bottom: 15px;
+      margin-left: 5px;
+    }
+  
+    .chart_profit {
+      font-size: 16px;
+    }
+  
+    .Chart_two_detailed {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+  
+    .chart_css {
+      margin-left: 5px;
+    }
+  
+    .main_chart {
+      margin-top: 15px;
+    }
+  }
+  
+  /* Chart three for css */
+
+  .chart_conainer{
+    display: flex;
+  }
+
+  /* Container */
+.container {
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Dark mode */
+.dark .container {
+    border-color: #374151;
+    background-color: #1f2937;
+    
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #000;
+}
+
+.dark .title {
+    color: #fff;
+}
+
+/* Dropdown */
+.dropdown-container {
+    position: relative;
+    z-index: 20;
+}
+
+.dropdown {
+    appearance: none;
+    background-color: transparent;
+    padding: 5px 15px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    outline: none;
+}
+
+.dropdown option {
+    background-color: #1f2937;
+}
+
+/* Chart */
+.chart-container {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.chart {
+    display: flex;
+    justify-content: center;
+}
+
+/* Data items */
+.data-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.data-item {
+    width: 45%;
+    display: flex;
+    align-items: center;
+}
+
+.indicator {
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 9999px;
+}
+
+.data-text {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #000;
+}
+
+.dark .data-text {
+    color: #fff;
+}
+
+/* Indicator colors */
+.bg-primary {
+    background-color: #3b82f6;
+}
+
+.bg-secondary {
+    background-color: #6577F3;
+}
+
+.bg-tertiary {
+    background-color: #8FD0EF;
+}
+
+.bg-quaternary {
+    background-color: #0FADCF;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) { /* Tablet */
+    .container {
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 1.125rem;
+    }
+
+    .data-item {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) { /* Mobile */
+    .container {
+        padding: 7px;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
+
+    .dropdown {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
+
+    .data-text {
+        font-size: 0.75rem;
+    }
+}
+
+  
+  
