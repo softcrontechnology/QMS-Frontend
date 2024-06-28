@@ -24,7 +24,7 @@ const Dashboard = () => {
   //   navigate("/login");
   //   return null;
   // }
-  return <h1 className="text-center mt-5">Welcome To DashBoard</h1>;
+  return <h1 className="text-center mt-5">Welcome</h1>;
 };
 
 export default Dashboard;
