@@ -82,9 +82,11 @@
 }
 
 .chart_profit {
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 600;
   color: #333;
   margin: 0;
+  margin-bottom: 20px;
 }
 
 .chart_det {
