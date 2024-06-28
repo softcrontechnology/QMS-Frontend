@@ -198,7 +198,7 @@ const Dashboard = () => {
       </div>
       <div className="table_section">
         <div>
-          <div className={`mui-datatables  'fullscreen' `}>
+          <div style={{marginTop:"30px"}} className={`mui-datatables fullscreen `}>
             <MUIDataTable
               title={
                 <Typography variant="h5" style={{ fontWeight: 'bold', color: "#2a2a2a", textAlign: "left" }}>

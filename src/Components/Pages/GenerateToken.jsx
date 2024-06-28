@@ -95,8 +95,8 @@ const GenerateToken = () => {
         <button className="button">
           <Link className="link" to="/dashboard">Back</Link>
         </button>
-        <button className="button">Cancel</button>
-        <button className="button">Reset Detail</button>
+        {/* <button className="button">Cancel</button>
+        <button className="button">Reset Detail</button> */}
       </div>
       <h1>Softcron Tecnology</h1>
       <div className="input-container">

@@ -69,7 +69,7 @@ const ChartThree = () => {
   //#endregion
 
   return (
-    <div class="container">
+    <div class="container_Chart_three">
     <div class="header">
         <h5 class="title">Visitors Analytics</h5>
         <div class="dropdown-container">

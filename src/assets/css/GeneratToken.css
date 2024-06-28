@@ -2,7 +2,8 @@
 .container {
   border: 1px solid #ccc;
   padding: 10px;
-  margin: 10px;
+  margin-top: 30px;
+  margin-left: 10%;
   background-color: #f5f5f5;
 }
 
@@ -43,6 +44,7 @@
   text-decoration: none;
   color: whitesmoke;
 }
+
 
 .button:hover {
   background-color: #45a049;
