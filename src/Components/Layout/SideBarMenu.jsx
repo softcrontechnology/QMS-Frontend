@@ -61,7 +61,7 @@ const SideBarMenu = () => {
                 />
               </svg>
             </span>
-            <span className="app-brand-text demo menu-text fw-bold">Vuexy</span>
+            <span className="app-brand-text demo menu-text fw-bold">Softcron</span>
           </a>
           <a
             href="!#"
