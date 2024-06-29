@@ -221,7 +221,9 @@ h1{
   }
   
   .ReactModal__Content h2{
-    font-size: 15px;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: -1px;
   }
   
   .button1 {
@@ -246,16 +248,17 @@ h1{
   }
 
   .QR_Code img{
-    margin-left: 20%;
+    margin-left:37%;
   }
 }
 
 /* Media queries for mobile phones */
 @media (max-width: 480px) {
   .container {
-    margin-left: 2%;
+    margin-left: 1%;
     padding: 5px;
   }
+  
   
   .mobile_req {
     font-size: 16px;
@@ -268,6 +271,11 @@ h1{
   .input-container input {
     margin-right: 0;
     margin-bottom: 10px;
+  }
+
+  .ReactModal__Content h2{
+    font-size: 20px;
+    font-weight: bold;
   }
   
   .button {
@@ -302,7 +310,8 @@ h1{
   .ReactModal__Content {
     width: 90%;
     height: auto;
-    margin: 30% auto;
+    margin: 20% auto;
+    margin-left: -7%;
     padding: 15px;
   }
   
