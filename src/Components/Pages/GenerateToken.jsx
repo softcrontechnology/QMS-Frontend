@@ -14,12 +14,14 @@ const GenerateToken = () => {
   const [receiptData, setReceiptData] = useState(null);
 
 
+
   // const baseImage64 = receiptData.qr_b64;
   const Navigate = useNavigate()
   const pritRef = useRef();
   const handle_Print = useReactToPrint({
     content:()=> pritRef.current,
   })
+  
 
   const handle_token = (e) => {
     setToken({ ...Token, [e.target.name]: e.target.value });

@@ -114,19 +114,24 @@ h1{
 
 .ReactModal__Content {
   width: 500px;
-  height: 520px;
-  margin-left: 30%;
-  margin-top: 4%;
+  max-width: 90%;
+  height: auto;
+  max-height: 90%;
+  margin: 4% auto;
   padding: 20px;
   background: #fff;
   border-radius: 8px;
   position: relative;
   outline: none;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .ReactModal__Content h2 {
-  margin-top: 0;
+  margin-top: 5px;
   text-align: center;
+  font-size: 2em;
+  margin-left: 7%;
 }
 
 .ReactModal__Content button {
@@ -137,6 +142,7 @@ h1{
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .ReactModal__Content button:hover {
@@ -161,10 +167,7 @@ h1{
   font-weight: bold;
 }
 
-.detail_of_users p:nth-child(1),
-.detail_of_users p:nth-child(2),
-.detail_of_users p:nth-child(3),
-.detail_of_users p:nth-child(4) {
+.detail_of_users p {
   font-weight: bold;
   color: black;
 }
@@ -172,26 +175,53 @@ h1{
 .QR_Code img {
   height: 150px;
   width: 150px;
+  margin-left: 32%;
 }
 
 .Print_button_receipt {
- float: right;
+  float: right;
 }
 
 .Print_button_receipt .btn_print {
   padding: 11px;
   width: 100px;
   background: #739bc1;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .Print_button_receipt .btn_print:hover {
   background: #9db3c8;
 }
 
+/* Utility classes for responsiveness */
+.hidden {
+  display: none !important;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.text-center {
+  text-align: center;
+}
+
 /* Media queries for tablets */
 @media (max-width: 768px) {
   .container {
     margin-left: 5%;
+    padding: 0 10px;
+  }
+  
+  .ReactModal__Content h2{
+    font-size: 15px;
   }
   
   .button1 {
@@ -201,7 +231,22 @@ h1{
 
   .ReactModal__Content {
     width: 80%;
-    margin-left: 10%;
+    margin: 10% auto;
+  }
+  
+  .head_date_token {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .Print_button_receipt {
+    float: right;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .QR_Code img{
+    margin-left: 20%;
   }
 }
 
@@ -226,25 +271,21 @@ h1{
   }
   
   .button {
-    /* display: flex; */
-
-    margin-left: 5px;
-    margin-top: 10px;
+    margin: 10px 5px 0 5px;
     width: 32%;
     text-align: center;
-    /* gap: 5px; */
   }
 
-  .button:nth-child(1){
+  .button:nth-child(1) {
     width: 25%;
   }
 
-  .button:nth-child(2){
+  .button:nth-child(2) {
     width: 25%;
   }
 
-  .button:nth-child(3){
-    width:40%;
+  .button:nth-child(3) {
+    width: 40%;
   }
   
   .button1 {
@@ -259,10 +300,10 @@ h1{
   }
 
   .ReactModal__Content {
-    width: 80%;
-    height: 60%;
-    margin-left: -1%;
-    margin-top: 30%;
+    width: 90%;
+    height: auto;
+    margin: 30% auto;
+    padding: 15px;
   }
   
   .head_date_token {
@@ -270,11 +311,53 @@ h1{
     gap: 10px;
   }
 
-  .Print_button_receipt{
+  .Print_button_receipt {
     display: flex;
-    margin-left: 60%;
-    margin-top: -943px;
-    width: 100px;
-
+    justify-content: center;
+    /* margin-top: 10px; */
   }
 }
+
+/* print.css */
+@media print {
+  /* Hide non-printable elements */
+  .modal, .btn_print, button {
+    display: none !important;
+  }
+  
+  /* Style the printable content */
+  .pop_up {
+    display: block !important;
+  }
+  
+  /* Ensure the QR Code image is visible and well-positioned */
+  .QR_Code img {
+    max-width: 100%;
+    height: auto;
+    margin-left: 38%;
+  }
+
+  /* Additional styling for print */
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+
+  .pop_up h2 {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .detail_Token_receipt {
+    margin-bottom: 20px;
+  }
+
+  .detail_of_users p {
+    margin: 5px 0;
+  }
+
+}
+
