@@ -1,7 +1,7 @@
-import { ApexOptions } from 'apexcharts';
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import '../charts/Chart.css'
+import axios from 'axios';
+import '../charts/Chart.css';
 
 const options= {
   colors: ['#3C50E0', '#80CAEE'],
@@ -74,11 +74,11 @@ const ChartTwo = () => {
   const [state, setState] = useState({
     series: [
       {
-        name: 'Sales',
+        name: 'Generate',
         data: [44, 55, 41, 67, 22, 43, 65],
       },
       {
-        name: 'Revenue',
+        name: 'Expire',
         data: [13, 23, 20, 8, 13, 27, 15],
       },
     ],
@@ -99,19 +99,13 @@ const ChartTwo = () => {
     <div className="Chart_main_2">
       <div className="chart_profit_main">
         <div>
-          <h4 className="chart_profit">
-            Profit this week
-          </h4>
+          <h4 className="chart_profit">Profit this week</h4>
         </div>
         <div>
           <div className="chart_det">
-            <select
-              name="#"
-              id="#"
-              className="Chart_two_detailed"
-            >
-              <option value="" className='dark:bg-boxdark'>This Week</option>
-              <option value="" className='dark:bg-boxdark'>Last Week</option>
+            <select name="#" id="#" className="Chart_two_detailed">
+              <option value="thisWeek" className="dark:bg-boxdark">This Week</option>
+              <option value="lastWeek" className="dark:bg-boxdark">Last Week</option>
             </select>
           </div>
         </div>
@@ -119,12 +113,7 @@ const ChartTwo = () => {
 
       <div>
         <div id="chartTwo" className="main_chart">
-          <ReactApexChart
-            options={options}
-            series={state.series}
-            type="bar"
-            height={250}
-          />
+          <ReactApexChart options={options} series={state.series} type="bar" height={250} />
         </div>
       </div>
     </div>
