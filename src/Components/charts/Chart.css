@@ -43,8 +43,9 @@
 /* Media query for mobile */
 @media (max-width: 768px) {
   .main_chart_one {
-    width: 100%;
-      margin: 2px;
+    width: 95%;
+      margin: 4px;
+      margin-left: 13px;
       padding: 10px;
   }
 
@@ -118,9 +119,9 @@
 
 @media (max-width: 768px) {
   .Chart_main_2 {
-      width: 100%;
+      width: 96%;
       max-width: none;
-      margin-left: 0;
+      margin-left: 5px;
       padding: 15px;
   }
 
@@ -304,7 +305,7 @@
 
 @media (max-width: 768px) {
   .container_Chart_three {
-    width: 100%;
+    width:85%;
     margin-top: 7px;
     margin-left: 5px;
     padding: 15px;
@@ -334,5 +335,114 @@
 
   .data-item {
     width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  /* Container Chart Three */
+  .container_Chart_three {
+    width: 96%; /* Increased width for better fit */
+    margin-top: 10px; /* Adjusted margin for better spacing */
+    margin-left: 10px;
+    padding: 10px; /* Reduced padding for smaller screens */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slightly lighter shadow */
+    border-radius: 6px; /* Slightly smaller border radius */
+    transition: all 0.3s ease;
+  }
+
+  /* Data Container */
+  .data-container {
+    margin-top: -15px; /* Adjusted margin for better alignment */
+    display: grid;
+    grid-template-columns: 1fr; /* Changed to single column for smaller screens */
+    gap: 10px; /* Added gap between grid items */
+  }
+
+  /* Data Text */
+  .data-text {
+    gap: 40px; /* Adjusted gap for smaller screens */
+    font-size: 0.875rem; /* Smaller font size for better readability */
+    line-height: 1.4;
+  }
+
+  /* Header */
+  .header {
+    margin-bottom: 10px; /* Reduced margin for smaller screens */
+    padding: 8px; /* Reduced padding */
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* Title */
+  .title {
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: 600; /* Maintained font weight */
+    text-transform: uppercase; /* Uppercase titles for consistency */
+  }
+
+  .dark .title {
+    color: #fff;
+  }
+
+  /* Data Item */
+  .data-item {
+    width: 100%;
+    padding: 8px; /* Reduced padding */
+    background-color: #f1f1f1; /* Light background color for data items */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+
+  /* Hover effects for interactive feel */
+  .data-item:hover {
+    transform: scale(1.02);
+  }
+
+  /* Additional Utility Classes */
+  .text-center {
+    text-align: center;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .mt-10 {
+    margin-top: 10px;
+  }
+
+  .mb-10 {
+    margin-bottom: 10px;
+  }
+
+  .p-10 {
+    padding: 10px;
+  }
+
+  .rounded {
+    border-radius: 6px; /* Adjusted border radius */
+  }
+
+  .shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+  }
+
+  .bg-light {
+    background-color: #f9f9f9;
+  }
+
+  .bg-dark {
+    background-color: #333;
+    color: #fff;
+  }
+
+  /* Responsive Typography */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.4;
   }
 }
