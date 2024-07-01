@@ -1,9 +1,8 @@
-import { ApexOptions } from 'apexcharts';
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import '../charts/Chart.css'
+import '../charts/Chart.css';
 
-const options= {
+const options = {
   colors: ['#3C50E0', '#80CAEE'],
   chart: {
     fontFamily: 'Satoshi, sans-serif',
@@ -17,7 +16,6 @@ const options= {
       enabled: false,
     },
   },
-
   responsive: [
     {
       breakpoint: 1536,
@@ -43,7 +41,6 @@ const options= {
   dataLabels: {
     enabled: false,
   },
-
   xaxis: {
     categories: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
   },
@@ -53,7 +50,6 @@ const options= {
     fontFamily: 'Satoshi',
     fontWeight: 500,
     fontSize: '14px',
-
     markers: {
       radius: 99,
     },
@@ -63,55 +59,70 @@ const options= {
   },
 };
 
-// interface ChartTwoState {
-//   series: {
-//     name: string;
-//     data: number[];
-//   }[];
-// }
+const ChartTwo = ({ thisWeekData, lastWeekData }) => {
+  const [selectedOption, setSelectedOption] = useState("thisWeek");
+  const [series, setSeries] = useState([
+    {
+      name: 'Generated',
+      data: [],
+    },
+    {
+      name: 'Used',
+      data: [],
+    },
+  ]);
 
-const ChartTwo = () => {
-  const [state, setState] = useState({
-    series: [
-      {
-        name: 'Sales',
-        data: [44, 55, 41, 67, 22, 43, 65],
-      },
-      {
-        name: 'Revenue',
-        data: [13, 23, 20, 8, 13, 27, 15],
-      },
-    ],
-  });
-  
-  const handleReset = () => {
-    setState((prevState) => ({
-      ...prevState,
-    }));
-  };
   useEffect(() => {
-    handleReset()
-  
-  }, [])
-   
+    let updatedSeries;
+    if (selectedOption === "thisWeek") {
+      if (thisWeekData) {
+        updatedSeries = series.map((serie) => {
+          if (serie.name === 'Generated') {
+            return { ...serie, data: thisWeekData.map(item => item.today_tokens_count) };
+          }
+          if (serie.name === 'Used') {
+            return { ...serie, data: thisWeekData.map(item => item.today_expired_tokens) };
+          }
+          return serie;
+        });
+      }
+    } else if (selectedOption === "lastWeek") {
+      if (lastWeekData) {
+        updatedSeries = series.map((serie) => {
+          if (serie.name === 'Generated') {
+            return { ...serie, data: lastWeekData.map(item => item.today_tokens_count) };
+          }
+          if (serie.name === 'Used') {
+            return { ...serie, data: lastWeekData.map(item => item.today_expired_tokens) };
+          }
+          return serie;
+        });
+      }
+    }
+    setSeries(updatedSeries);
+  }, [thisWeekData, lastWeekData, selectedOption]);
+
+  const handleChanges = (event) => {
+    setSelectedOption(event.target.value);
+  };
 
   return (
     <div className="Chart_main_2">
       <div className="chart_profit_main">
         <div>
-          <h4 className="chart_profit">
-            Profit this week
-          </h4>
+          <h4 className="chart_profit">Profit this week</h4>
         </div>
         <div>
           <div className="chart_det">
             <select
-              name="#"
-              id="#"
+              name="timeframe"
+              id="timeframe"
               className="Chart_two_detailed"
+              onChange={handleChanges}
+              value={selectedOption}
             >
-              <option value="" className='dark:bg-boxdark'>This Week</option>
-              <option value="" className='dark:bg-boxdark'>Last Week</option>
+              <option value="thisWeek" className="dark:bg-boxdark">This Week</option>
+              <option value="lastWeek" className="dark:bg-boxdark">Last Week</option>
             </select>
           </div>
         </div>
@@ -119,12 +130,7 @@ const ChartTwo = () => {
 
       <div>
         <div id="chartTwo" className="main_chart">
-          <ReactApexChart
-            options={options}
-            series={state.series}
-            type="bar"
-            height={250}
-          />
+          <ReactApexChart options={options} series={series} type="bar" height={250} />
         </div>
       </div>
     </div>

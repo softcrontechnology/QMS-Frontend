@@ -1,74 +1,172 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
 import '../Dashboard/Dashboard.css'
 // import { Chart } from 'react-charts'
+=======
+import '../Dashboard/Dashboard.css';
+import { Chart } from 'react-charts';
+>>>>>>> a21ef3cc81f4c2ce4bea26cf156bc32277d23e64
 import MUIDataTable from 'mui-datatables';
 import { Typography } from "@mui/material";
 import ChartOne from '../charts/ChartOne';
 import ChartThree from '../charts/ChartThree';
 import ChartTwo from '../charts/ChartTwo';
-
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [tableData, setTableData] = useState([]);
+  const [thisWeekData, setThisWeekData] = useState([]);
+  const [lastWeekData, setLastWeekData] = useState([]);
+  const [TodayTokenList, setTodayTokenList] = useState([]);
+  const [monthToken, setMonthToken] = useState([]);
+  const [YearData, setYearData] = useState([]);
 
-  //#region Chart On Dashboard
-  const data = React.useMemo(
-    () => [
-      {
-        label: 'Series 1',
-        data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
-      },
-      {
-        label: 'Series 2',
-        data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
-      }
-    ],
-    []
-  )
-
-  const axes = React.useMemo(
-    () => [
-      { primary: true, type: 'linear', position: 'bottom' },
-      { type: 'linear', position: 'left' }
-    ],
-    []
-  )
-
-  //#endregion
-
-
-  //#region Get Live Queue Token on Dashboard
-
-  useEffect(() => {
-    const fetchList = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/api/v1/getQueue", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        });
-        const result = await response.json();
-        console.log(result);
-
-        if (Array.isArray(result.message[0])) {
-          setTableData(result.message[0]);
-        } else {
-          console.error("Expected an array but got:", result.message[0]);
-          setTableData([]);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
+  // Fetching functions
+  const fetchQueueData = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/getQueue", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+      const result = await response.json();
+      if (Array.isArray(result.message[0])) {
+        setTableData(result.message[0]);
+      } else {
+        console.error("Expected an array but got:", result.message[0]);
         setTableData([]);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setTableData([]);
+    }
+  };
 
-    fetchList();
+  const fetchWeekReport = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/get-this-week-report", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+      const result = await response.json();
+      if (Array.isArray(result.message)) {
+        setThisWeekData(result.message);
+      } else {
+        console.error("Expected an array but got:", result.message);
+        setThisWeekData([]);
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong, Try Again!");
+    }
+  };
 
-    const intervalId = setInterval(fetchList, 1000);
+  const fetchLastWeekReport = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/get-last-week-report", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+      const result = await response.json();
+      if (result) {
+        setLastWeekData(result.message);
+      } else {
+        console.error("Expected an array but got:", result.message);
+        setLastWeekData([]);
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong, Try Again!");
+    }
+  };
 
+  const fetchMonthReport = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/get-this-month-report", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+      const result = await response.json();
+      if (Array.isArray(result.message)) {
+        setMonthToken(result.message);
+      } else {
+        console.error("Expected an array but got:", result.message);
+        setMonthToken([]);
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong, Try Again!");
+    }
+  };
+
+  const fetchTodayReport = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/get-today-report", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+      const result = await response.json();
+      if (result.message.ResponseCode === 1) {
+        setTodayTokenList(result.message);
+      } else {
+        console.error("Expected an array but got:", result.message);
+        setTodayTokenList([]);
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong, Try Again!");
+    }
+  };
+
+  const fetchYearReport = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/get-this-year-report", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+      const result = await response.json();
+      if (Array.isArray(result.message)) {
+        setYearData(result.message);
+      } else {
+        console.error("Expected an array but got:", result.message);
+        setYearData([]);
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong, Try Again!");
+    }
+  };
+
+  // Fetch data on mount
+  useEffect(() => {
+    fetchQueueData();
+    const intervalId = setInterval(fetchQueueData, 1000);
     return () => clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    fetchWeekReport();
+  }, []);
+
+  useEffect(() => {
+    fetchLastWeekReport();
+  }, []);
+
+  useEffect(() => {
+    fetchMonthReport();
+  }, []);
+
+  useEffect(() => {
+    fetchTodayReport();
+  }, []);
+
+  useEffect(() => {
+    fetchYearReport();
   }, []);
 
   const columns = [
@@ -83,7 +181,7 @@ const Dashboard = () => {
             <strong>{label}</strong>
           </th>
         ),
-        customBodyRender: (value, tableMeta, updateValue) => {
+        customBodyRender: (value, tableMeta) => {
           const customer = tableData[tableMeta.rowIndex];
           return (
             <div className="d-flex justify-content-start align-items-center product-name">
@@ -101,7 +199,7 @@ const Dashboard = () => {
       options: {
         sort: true,
         filter: true,
-        customBodyRender: (value, tableMeta, updateValue) => {
+        customBodyRender: (value, tableMeta) => {
           const customer = tableData[tableMeta.rowIndex];
           return (
             <h6 className="text-body text-nowrap mb-0">{customer.customer_mobile}</h6>
@@ -115,7 +213,7 @@ const Dashboard = () => {
       options: {
         sort: true,
         filter: true,
-        customBodyRender: (value, tableMeta, updateValue) => {
+        customBodyRender: (value, tableMeta) => {
           const customer = tableData[tableMeta.rowIndex];
           return (
             <h6 className="text-body text-nowrap mb-0">{customer.no_of_person}</h6>
@@ -129,7 +227,7 @@ const Dashboard = () => {
       options: {
         sort: true,
         filter: true,
-        customBodyRender: (value, tableMeta, updateValue) => {
+        customBodyRender: (value, tableMeta) => {
           const customer = tableData[tableMeta.rowIndex];
           return (
             <h6 className="text-body text-nowrap mb-0">{customer.token_no}</h6>
@@ -148,7 +246,7 @@ const Dashboard = () => {
             {label}
           </th>
         ),
-        customBodyRender: (value, tableMeta, updateValue) => {
+        customBodyRender: (value, tableMeta) => {
           const customer = tableData[tableMeta.rowIndex];
           const base64Image = customer.qr_b64;
           return (
@@ -169,51 +267,47 @@ const Dashboard = () => {
     responsive: 'standard', // Options are 'stacked', 'scrollFullHeight', 'scrollMaxHeight', 'standard'
   };
 
-  //#endregion
-
-
   return (
     <div className="main_dashboard">
       <div className="Token">
-        <div className="dashboard_token_no">
+        <div className="dashboard_token_no total">
           <h4>Total Token</h4>
           <p>20</p>
         </div>
-        <div className="dashboard_token_no">
+        <div className="dashboard_token_no pending">
           <h4>Pending Token</h4>
           <p>15</p>
         </div>
-        <div className="dashboard_token_no">
+        <div className="dashboard_token_no complete">
           <h4>Complete Token</h4>
           <p>5</p>
         </div>
+        <div className="dashboard_token_no waiting">
+          <h4>Waiting Token</h4>
+          <p>5</p>
+        </div>
       </div>
-      {/* <h1 className="text-center mt-5">Welcome To DashBoard</h1> */}
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        <ChartOne />
+        <ChartOne thisWeekData={thisWeekData} thisMonthData={monthToken} thisYearData={YearData} />
         <div className="chart_conainer">
-          <ChartTwo />
+          <ChartTwo thisWeekData={thisWeekData} lastWeekData={lastWeekData} />
           <ChartThree />
         </div>
       </div>
-      <div className="table_section">
-        <div>
-          <div style={{marginTop:"30px"}} className={`mui-datatables fullscreen `}>
+      <Link to="/display-queue">
+        <div className="table_section">
+          <div style={{ marginTop: "30px", width: "95%", marginLeft: "2%" }} className={`mui-datatables fullscreen`}>
             <MUIDataTable
-              title={
-                <Typography variant="h5" style={{ fontWeight: 'bold', color: "#2a2a2a", textAlign: "left" }}>
-                  Live Queue
-                </Typography>
-              }
+              title={<Typography variant="h5" style={{ fontWeight: 'bold', color: "#2a2a2a", textAlign: "left" }}>Live Queue</Typography>}
               data={tableData}
               columns={columns}
               options={options}
             />
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   )
-}
+};
 
 export default Dashboard;

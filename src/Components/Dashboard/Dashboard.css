@@ -14,15 +14,34 @@
   }
   
   .dashboard_token_no {
-    flex-basis: 25%;
-    margin: 20px;
+    flex-basis: 23.5%;
+    margin: 4px;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+
+  .dashboard_token_no h4{
+    font-weight: 600;
+  }
+
+  .total {
+    background-color: #ff6e7f;
+  }
   
+  .pending {
+    background-color: #ffccaa;
+  }
+  
+  .complete {
+    background-color: #a0e7e5;
+  }
+  
+  .waiting {
+    background-color: #b4b4b4;
+  }
   .dashboard_token_no h4 {
     margin-top: 0;
   }
