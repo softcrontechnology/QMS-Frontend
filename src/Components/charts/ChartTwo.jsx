@@ -67,7 +67,7 @@ const ChartTwo = ({ thisWeekData, lastWeekData }) => {
       data: [],
     },
     {
-      name: 'Used',
+      name: 'Scanned',
       data: [],
     },
   ]);
@@ -80,8 +80,8 @@ const ChartTwo = ({ thisWeekData, lastWeekData }) => {
           if (serie.name === 'Generated') {
             return { ...serie, data: thisWeekData.map(item => item.today_tokens_count) };
           }
-          if (serie.name === 'Used') {
-            return { ...serie, data: thisWeekData.map(item => item.today_expired_tokens) };
+          if (serie.name === 'Scanned') {
+            return { ...serie, data: thisWeekData.map(item => item.today_scanned_tokens) };
           }
           return serie;
         });
@@ -92,8 +92,8 @@ const ChartTwo = ({ thisWeekData, lastWeekData }) => {
           if (serie.name === 'Generated') {
             return { ...serie, data: lastWeekData.map(item => item.today_tokens_count) };
           }
-          if (serie.name === 'Used') {
-            return { ...serie, data: lastWeekData.map(item => item.today_expired_tokens) };
+          if (serie.name === 'Scanned') {
+            return { ...serie, data: lastWeekData.map(item => item.today_scanned_tokens) };
           }
           return serie;
         });

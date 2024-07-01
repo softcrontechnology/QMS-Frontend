@@ -10,7 +10,7 @@ const ChartOne = ({ thisWeekData, thisMonthData, thisYearData }) => {
       data: [],
     },
     {
-      name: 'Expired',
+      name: 'Scanned',
       data: [],
     },
   ]);
@@ -30,8 +30,8 @@ const ChartOne = ({ thisWeekData, thisMonthData, thisYearData }) => {
         if (serie.name === 'Generated') {
           return { ...serie, data: thisWeekData.map(item => item.today_tokens_count) };
         }
-        if (serie.name === 'Expired') {
-          return { ...serie, data: thisWeekData.map(item => item.today_expired_tokens) };
+        if (serie.name === 'Scanned') {
+          return { ...serie, data: thisWeekData.map(item => item.today_scanned_tokens) };
         }
         return serie;
       });
@@ -53,8 +53,8 @@ const ChartOne = ({ thisWeekData, thisMonthData, thisYearData }) => {
         if (serie.name === 'Generated') {
           return { ...serie, data: thisMonthData.map(item => item.today_tokens_count).slice(0, 30) };
         }
-        if (serie.name === 'Expired') {
-          return { ...serie, data: thisMonthData.map(item => item.today_expired_tokens).slice(0, 30) };
+        if (serie.name === 'Scanned') {
+          return { ...serie, data: thisMonthData.map(item => item.today_scanned_tokens).slice(0, 30) };
         }
         return serie;
       });
@@ -75,8 +75,8 @@ const ChartOne = ({ thisWeekData, thisMonthData, thisYearData }) => {
         if (serie.name === 'Generated') {
           return { ...serie, data: thisYearData.map(item => item.today_tokens_count).slice(0, 12) };
         }
-        if (serie.name === 'Expired') {
-          return { ...serie, data: thisYearData.map(item => item.today_expired_tokens).slice(0, 12) };
+        if (serie.name === 'Scanned') {
+          return { ...serie, data: thisYearData.map(item => item.today_scanned_tokens).slice(0, 12) };
         }
         return serie;
       });
