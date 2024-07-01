@@ -8,7 +8,6 @@ import { Navigate } from 'react-router-dom';
 const Scanner = () => {
   const [scanResult, setScanResult] = useState('');
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const [is_scanned, setIs_scanned] = useState(true)
 
   const tableRef = useRef(null);
 
@@ -23,7 +22,7 @@ const Scanner = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ token_no, is_scanned }),
+          body: JSON.stringify({ token_no}),
           credentials: "include",
         });
         const data = await response.json();
@@ -127,7 +126,6 @@ const Scanner = () => {
             onResult={(result, error) => {
               if (result) {
                 handleScan(result);
-                setIs_scanned(true)
               }
             }}
             style={{ width: '100%', }}

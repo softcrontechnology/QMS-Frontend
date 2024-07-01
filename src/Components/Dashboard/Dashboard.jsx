@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
-import '../Dashboard/Dashboard.css'
-// import { Chart } from 'react-charts'
-=======
 import '../Dashboard/Dashboard.css';
-import { Chart } from 'react-charts';
->>>>>>> a21ef3cc81f4c2ce4bea26cf156bc32277d23e64
 import MUIDataTable from 'mui-datatables';
 import { Typography } from "@mui/material";
 import ChartOne from '../charts/ChartOne';
