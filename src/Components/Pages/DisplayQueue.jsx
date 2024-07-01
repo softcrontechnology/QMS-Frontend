@@ -11,14 +11,6 @@ const ProductList = () => {
     const [isFullScreen, setIsFullScreen] = useState(false);
     const tableRef = useRef(null);
 
-    const isAuthenticated = Cookies.get("token") !== undefined;
-
-    console.log(isAuthenticated);
-
-    if (!isAuthenticated) {
-        return <Navigate to="/" replace />;
-    }
-
     useEffect(() => {
         const fetchList = async () => {
             try {
@@ -194,6 +186,13 @@ const ProductList = () => {
         responsive: 'standard', // Options are 'stacked', 'scrollFullHeight', 'scrollMaxHeight', 'standard'
     };
 
+    const isAuthenticated = Cookies.get("token") !== undefined;
+
+    console.log(isAuthenticated);
+
+    if (!isAuthenticated) {
+        return <Navigate to="/" replace />;
+    }
     return (
         <div>
             <div className="d-flex justify-content-end p-3">

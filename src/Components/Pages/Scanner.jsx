@@ -3,18 +3,11 @@ import { QrReader } from 'react-qr-reader';
 import './QrScanner.css';
 import { VscScreenFull } from 'react-icons/vsc';
 import Cookies from "js-cookie";
+import { Navigate } from 'react-router-dom';
 
 const Scanner = () => {
   const [scanResult, setScanResult] = useState('');
   const [isFullScreen, setIsFullScreen] = useState(false);
-
-  const isAuthenticated = Cookies.get("token") !== undefined;
-
-  console.log(isAuthenticated);
-
-  if (!isAuthenticated) {
-    return <Navigate to="/" replace />;
-  }
 
   const tableRef = useRef(null);
 
@@ -108,6 +101,14 @@ const Scanner = () => {
     }
     setIsFullScreen(!isFullScreen);
   };
+
+  const isAuthenticated = Cookies.get("token") !== undefined;
+
+  console.log(isAuthenticated);
+
+  if (!isAuthenticated) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <div>

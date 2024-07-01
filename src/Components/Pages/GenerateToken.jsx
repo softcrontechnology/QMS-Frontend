@@ -6,14 +6,6 @@ import { useReactToPrint } from "react-to-print";
 import Cookies from "js-cookie";
 
 const GenerateToken = () => {
-  const isAuthenticated = Cookies.get("token") !== undefined;
-
-  console.log(isAuthenticated);
-
-  if (!isAuthenticated) {
-    return <Navigate to="/" replace />;
-  }
-  
   const [Token, setToken] = useState({
     name: "",
     mobile: "",
@@ -98,6 +90,14 @@ const GenerateToken = () => {
   //#endregion
 
   //#region Html for create_token
+
+  const isAuthenticated = Cookies.get("token") !== undefined;
+
+  console.log(isAuthenticated);
+
+  if (!isAuthenticated) {
+    return <Navigate to="/" replace />;
+  }
   return <div>
     <div className="container">
       <div className="button-container">
