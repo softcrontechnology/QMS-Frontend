@@ -1,10 +1,19 @@
-import React, { useState , useRef} from "react";
+import React, { useState, useRef } from "react";
 import '../../assets/css/GeneratToken.css'
 import { Link, useNavigate } from "react-router-dom";
 import Modal from 'react-modal';
 import { useReactToPrint } from "react-to-print";
+import Cookies from "js-cookie";
 
 const GenerateToken = () => {
+  const isAuthenticated = Cookies.get("token") !== undefined;
+
+  console.log(isAuthenticated);
+
+  if (!isAuthenticated) {
+    return <Navigate to="/" replace />;
+  }
+  
   const [Token, setToken] = useState({
     name: "",
     mobile: "",
@@ -18,7 +27,7 @@ const GenerateToken = () => {
   const Navigate = useNavigate()
   const pritRef = useRef();
   const handle_Print = useReactToPrint({
-    content:()=> pritRef.current,
+    content: () => pritRef.current,
   })
 
   const handle_token = (e) => {
@@ -88,7 +97,7 @@ const GenerateToken = () => {
   };
   //#endregion
 
- //#region Html for create_token
+  //#region Html for create_token
   return <div>
     <div className="container">
       <div className="button-container">
@@ -133,35 +142,35 @@ const GenerateToken = () => {
     <div className="modal">
       <Modal ref={pritRef} isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Receipt">
         <button onClick={closeModal}>Close</button>
-         <div className="Print_button_receipt">
-          <button  className="btn_print" onClick={handle_Print} >Print</button>
+        <div className="Print_button_receipt">
+          <button className="btn_print" onClick={handle_Print} >Print</button>
         </div>
         <div className="pop_up" ref={pritRef}>
-        <div> 
-        <h2>Softcron tecnology</h2>
-        </div>
-        {receiptData && (
           <div>
-          <div  className="detail_Token_receipt">
-            <div className="head_date_token">
-              <p>Token_No: {receiptData.token_no}</p>
-              <p>Date: {formatDate(receiptData.created_datetime)}</p>
-            </div>
-            <div className="detail_of_users">
-              <p>Name:           {receiptData.name}</p>
-              <p>Mobile:         {receiptData.mobile}</p>
-              <p>No. of Person:  {receiptData.no_of_person}</p>
-              <p>Token ID:       {receiptData.token_id}</p>
-            </div>
-            {/* Display other receipt details here */}
-            <div  className="QR_Code">
-              <img  src={receiptData && receiptData.qr_b64} alt="QRCode" />
-            </div>
+            <h2>Softcron tecnology</h2>
           </div>
+          {receiptData && (
+            <div>
+              <div className="detail_Token_receipt">
+                <div className="head_date_token">
+                  <p>Token_No: {receiptData.token_no}</p>
+                  <p>Date: {formatDate(receiptData.created_datetime)}</p>
+                </div>
+                <div className="detail_of_users">
+                  <p>Name:           {receiptData.name}</p>
+                  <p>Mobile:         {receiptData.mobile}</p>
+                  <p>No. of Person:  {receiptData.no_of_person}</p>
+                  <p>Token ID:       {receiptData.token_id}</p>
+                </div>
+                {/* Display other receipt details here */}
+                <div className="QR_Code">
+                  <img src={receiptData && receiptData.qr_b64} alt="QRCode" />
+                </div>
+              </div>
+            </div>
+
+          )}
         </div>
-       
-        )}
-         </div>
       </Modal>
     </div>
 

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import MUIDataTable from 'mui-datatables';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { VscScreenFull } from 'react-icons/vsc';
+import Cookies from "js-cookie";
 
 import { Typography } from "@mui/material";
 
@@ -9,6 +10,14 @@ const ProductList = () => {
     const [tableData, setTableData] = useState([]);
     const [isFullScreen, setIsFullScreen] = useState(false);
     const tableRef = useRef(null);
+
+    const isAuthenticated = Cookies.get("token") !== undefined;
+
+    console.log(isAuthenticated);
+
+    if (!isAuthenticated) {
+        return <Navigate to="/" replace />;
+    }
 
     useEffect(() => {
         const fetchList = async () => {

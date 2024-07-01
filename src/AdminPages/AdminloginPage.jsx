@@ -100,7 +100,7 @@ const AdminLoginPage = () => {
                       id="username"
                       name="username"
                       type="text"
-                      placeholder="Enter your email"
+                      placeholder="Enter your username"
                       value={obj.username}
                       required
                     />

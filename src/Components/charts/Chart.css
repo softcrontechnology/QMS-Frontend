@@ -120,6 +120,7 @@
       max-width: none;
       margin-left: 0;
       padding: 15px;
+      height: 100%;
   }
 
   .chart_profit_main {
@@ -306,7 +307,7 @@
     width: 100%;
     margin-top: 7px;
     padding: 15px;
-    height: auto;
+    height: 60%;
   }
 
   .header {

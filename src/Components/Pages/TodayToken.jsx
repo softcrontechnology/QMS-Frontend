@@ -3,11 +3,20 @@ import MUIDataTable from 'mui-datatables';
 import { Link } from 'react-router-dom';
 import { VscScreenFull } from 'react-icons/vsc';
 import { Typography } from '@mui/material';
+import Cookies from "js-cookie";
 
 const ProductList = () => {
     const [tableData, setTableData] = useState([]);
     const [isFullScreen, setIsFullScreen] = useState(false);
     const tableRef = useRef(null);
+
+    const isAuthenticated = Cookies.get("token") !== undefined;
+
+    console.log(isAuthenticated);
+
+    if (!isAuthenticated) {
+        return <Navigate to="/" replace />;
+    }
 
     useEffect(() => {
         const fetchList = async () => {
@@ -60,7 +69,7 @@ const ProductList = () => {
             document.removeEventListener("msfullscreenchange", handleFullScreenChange);
         };
     }, []);
-    
+
     const toggleFullScreen = () => {
         if (!isFullScreen) {
             if (tableRef.current.requestFullscreen) {
@@ -94,7 +103,7 @@ const ProductList = () => {
                 sort: true,
                 filter: true,
                 customHeadRender: ({ label }) => (
-                    <th style={{ textAlign: 'left',paddingLeft:"15px" }}>
+                    <th style={{ textAlign: 'left', paddingLeft: "15px" }}>
                         <strong>{label}</strong>
                     </th>
                 ),
@@ -159,7 +168,7 @@ const ProductList = () => {
                 sort: false,
                 filter: false,
                 customHeadRender: ({ label }) => (
-                    <th style={{ fontWeight: 'bold', textAlign:"center" }}>
+                    <th style={{ fontWeight: 'bold', textAlign: "center" }}>
                         {label}
                     </th>
                 ),
@@ -175,7 +184,7 @@ const ProductList = () => {
             }
         }
     ];
-    
+
 
     const options = {
         selectableRows: 'none',

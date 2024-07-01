@@ -2,10 +2,19 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { QrReader } from 'react-qr-reader';
 import './QrScanner.css';
 import { VscScreenFull } from 'react-icons/vsc';
+import Cookies from "js-cookie";
 
 const Scanner = () => {
   const [scanResult, setScanResult] = useState('');
   const [isFullScreen, setIsFullScreen] = useState(false);
+
+  const isAuthenticated = Cookies.get("token") !== undefined;
+
+  console.log(isAuthenticated);
+
+  if (!isAuthenticated) {
+    return <Navigate to="/" replace />;
+  }
 
   const tableRef = useRef(null);
 
@@ -35,7 +44,7 @@ const Scanner = () => {
         if (data.message === "Your token is valid") {
           setScanResult("")
           return alert("Token Valid")
-          
+
         }
 
         // if (Array.isArray(result)) {
