@@ -14,6 +14,11 @@ const Dashboard = () => {
   const [TodayTokenList, setTodayTokenList] = useState([]);
   const [monthToken, setMonthToken] = useState([]);
   const [YearData, setYearData] = useState([]);
+  const [report, setReport] = useState({
+    TodayTokens: 0,
+    TodayScannedTokens: 0,
+    TodayWaitingTokens: 0
+  });
 
   // Fetching functions
   const fetchQueueData = async () => {
@@ -106,6 +111,7 @@ const Dashboard = () => {
       const result = await response.json();
       if (result.message.ResponseCode === 1) {
         setTodayTokenList(result.message);
+        setReport({ TodayTokens: result.message.TodayTokens, TodayScannedTokens: result.message.TodayScannedTokens, TodayWaitingTokens: result.message.TodayWaitingTokens });
       } else {
         console.error("Expected an array but got:", result.message);
         setTodayTokenList([]);
@@ -266,19 +272,19 @@ const Dashboard = () => {
       <div className="Token">
         <div className="dashboard_token_no total">
           <h4>Total Token</h4>
-          <p>20</p>
+          <p>{report.TodayTokens}</p>
         </div>
         <div className="dashboard_token_no pending">
           <h4>Pending Token</h4>
-          <p>15</p>
+          <p>{report.TodayWaitingTokens}</p>
         </div>
         <div className="dashboard_token_no complete">
           <h4>Complete Token</h4>
-          <p>5</p>
+          <p>{report.TodayScannedTokens}</p>
         </div>
         <div className="dashboard_token_no waiting">
           <h4>Waiting Token</h4>
-          <p>5</p>
+          <p>{report.TodayWaitingTokens}</p>
         </div>
       </div>
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">

@@ -22,7 +22,7 @@ const Scanner = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ token_no}),
+          body: JSON.stringify({ token_no }),
           credentials: "include",
         });
         const data = await response.json();
